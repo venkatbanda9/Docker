@@ -4,3 +4,4 @@ USER root
 
 COPY ./script.sh /
 RUN ./script.sh
+ADD https://get.jenkins.io/war-stable/2.263.4/jenkins.war  /
