@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+ tomee:
+  image: tomee
+  ports:
+   - 5050:8080
+  container_name: QAserver
+ prodserv:
+  image: tomee
+  ports:
+   - 6060:8080
+  container_name: Prodserver
+ jenkins:
+  image: jenkins/jenkins
+  ports:
+   - 7070:8080
+  container_name: myjenkins
