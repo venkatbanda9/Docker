@@ -1,0 +1,6 @@
+FROM ubuntu
+MAINTAINER VENKAT
+USER root
+
+COPY ./script.sh /
+RUN ./script.sh
