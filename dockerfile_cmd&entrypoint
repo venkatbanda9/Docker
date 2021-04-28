@@ -1,0 +1,27 @@
+CMD and ENTRYPOIT
+------------------------
+Bothe of them are used to specify the default process that should be
+triggered when the container starts but the CMD instruction can be 
+overridden with some other process passed at the docker run command
+
+Eg:
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y nginx
+CMD ["/usr/sbin/nginx","-g","daemon off;"]
+EXPOSE 80
+
+Though the default process is to trigger nginx we can bypass that
+and make it work on some other process
+
+docker build -t myubuntu .
+Create a container
+docker run --name u1 -it -d myubuntu
+Here if we inspect the default process we will see that 
+nginx as the default process
+docker container ls
+
+on the otherhand we can modify that default process to something else
+docker run --name u1 -d -P myubuntu ls -la
+Now if we do "docker container ls"  we will see the dafault process
+to be "ls -la"
