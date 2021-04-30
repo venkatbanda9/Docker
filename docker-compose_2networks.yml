@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+ mydb:
+  image: mysql:5
+  environment:
+   MYSQL_ROOT_PASSWORD: venkat
+  ports:
+   - 3306:3306
+  networks:
+   - venkat1
+  container_name: mydb
+
+ adminer:
+  image: adminer
+  ports:
+   - 8080:8080
+  networks:
+   - venkat2
+  container_name: adminer
+
+networks:
+ venkat1: {}
+ venkat2: {}
