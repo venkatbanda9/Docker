@@ -1,0 +1,33 @@
+---
+version: '3.3'
+
+services:
+ myjenkins:
+  build: .
+  ports:
+   - 6060:8080
+  container_name: myjenkins
+
+ QAS:
+  image: tomee
+  ports:
+   - 7070:8080
+  container_name: QAServer
+  links:
+   - myjenkins
+
+ ProdServer:
+  image: tomee
+  ports:
+   - 8080:8080
+  container_name: ProdServer
+  links:
+   - myjenkins
+========================================================
+     DOCKERFILE CONTENT
+========================================================
+FROM jenkins/jenkins
+MAINTAINER VENKAT
+USER root
+RUN apt-get update -y
+RUN apt-get install git -y
