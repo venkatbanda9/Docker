@@ -1,0 +1,22 @@
+=================================
+docker-compose.yml file
+=================================
+version: '3.3'
+
+services:
+ entrypoint:
+  build: .
+  ports:
+   -
+  container_name: newoswithhttpd
+
+===================================
+dockerfile
+===================================
+FROM centos
+MAINTAINER VENKAT
+RUN yum update -y
+RUN yum install httpd -y
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+COPY index.html /var/www/html
+EXPOSE 80
