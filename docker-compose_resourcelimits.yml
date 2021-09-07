@@ -1,0 +1,30 @@
+---
+version: '3.8'
+
+services:
+ myjenkins:
+  image: jenkins/jenkins
+  ports:
+   - 8080:8080
+ 
+ QAserver:
+  image: tomee
+  ports:
+   - 8081:8080
+  deploy:
+   replicas: 3
+   resources:
+    limits:
+     memory: "200M"
+     cpus: "1"
+
+ Prodserver:
+  image: tomee
+  ports:
+   - 8082:8080
+  deploy:
+   replicas: 3
+   resources:
+    limits:
+     memory: "200M"
+     cpus: "1"
